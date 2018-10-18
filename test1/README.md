@@ -19,7 +19,7 @@ and d.department_name in ('IT'，'Sales')
 GROUP BY department_name;
 ```
 运行结果：
-![运行结果](https://github.com/lihongfei666/oracle/blob/master/test1/1.PNG)
+![运行结果](https://github.com/liumengqi77/oracle/blob/master/test1/l1.PNG)
 
 - 查询2：
 ```SQL
@@ -31,21 +31,22 @@ GROUP BY department_name
 HAVING d.department_name in ('IT'，'Sales');
 ```
 运行结果：
-![运行结果](https://github.com/lihongfei666/oracle/blob/master/test1/2.PNG)
+![运行结果](https://github.com/liumengqi77/oracle/blob/master/test1/l2.PNG)
 
 >通过两条查询语句的查询，我认为第二条查询语句要更好一点。两条语句都是查询所有部门以及以下员工的总数与平均工资。但是“Where”是一个约束声明，在查询数据库的结果返回之前对数据库中的查询条件进行约束，在结果返回之前起作用；“Having”是一个过滤声明，所谓过滤是在查询数据库的结果返回之后进行过滤，在结果返回之后起作用。
 
 - 自定义查询：
 ```SQL
-SET AUTOTRACE ON
-SELECT (R.REGION_NAME)AS "地区名称",COUNT(C.REGION_ID)AS "各地区国家数"
-FROM HR.REGIONS R, HR.COUNTRIES C
-WHERE R.REGION_ID=C.REGION_ID
-group by R.REGION_NAME, R.REGION_ID
-HAVING R.REGION_ID IN ('1','2','3','4');
+select t.*,rownum 
+from
+(select l.location_id,l.city
+from
+hr.locations l
+order by l.location_id) t
+where rownum>0 and rownum<=5
 ```
 运行结果：
-![运行结果](https://github.com/lihongfei666/oracle/blob/master/test1/3.PNG)
+![运行结果](https://github.com/liumengqi77/oracle/blob/master/test1/l3.PNG)
 
->该条自定义查询语句是查询4个地区名称以及各地区的国家数目。因为前面得出用第二种查询语句更优的结论，所以采用了“Having”写法。
+>该条自定义查询语句是查询地址和城市。
 
