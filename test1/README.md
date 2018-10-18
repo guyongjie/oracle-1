@@ -19,9 +19,7 @@ and d.department_name in ('IT'，'Sales')
 GROUP BY department_name;
 ```
 运行结果：
-![运行结果](https://github.com/lihongfei666/oracle/blob/master/test1/1.PNG
-
-)
+![运行结果](https://github.com/lihongfei666/oracle/blob/master/test1/1.PNG)
 
 - 查询2：
 ```SQL
@@ -47,9 +45,7 @@ group by R.REGION_NAME, R.REGION_ID
 HAVING R.REGION_ID IN ('1','2','3','4');
 ```
 运行结果：
-![运行结果](https://github.com/lihongfei666/oracle/blob/master/test1/3.PNG
-
-)
+![运行结果](https://github.com/lihongfei666/oracle/blob/master/test1/3.PNG)
 
 >该条自定义查询语句是查询4个地区名称以及各地区的国家数目。因为前面得出用第二种查询语句更优的结论，所以采用了“Having”写法。
 
