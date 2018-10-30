@@ -42,6 +42,7 @@ SELECT * FROM NEW_USER_WTS.MYVIEW_LMQ;  //登录HR用户查询MYVIEW_LMQ视图
 ![运行结果](https://github.com/liumengqi77/oracle/blob/master/test2/p3.png)
 
 实验分析
+
 在创建用户后需要给用户分配角色，以此来授予用户权限，其他的用户若想要访问这个用户的表，需要被该用户授予相应的权限才能做到
 
 
