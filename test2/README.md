@@ -11,62 +11,37 @@ Oracle有一个开发者角色resource，可以创建表、过程、触发器等
 - 创建角色之后，再创建用户new_user，给用户分配表空间，设置限额为50M，授予con_res_view角色。
 - 最后测试：用新用户new_user连接数据库、创建表，插入数据，创建视图，查询表和视图的数据。
 
-## 实验参考步骤
+## 实验步骤
 
-对于以下的对象名称con_res_view，new_user，在实验的时候应该修改为自己的名称。
+
 
 - 第1步：以system登录到pdborcl，创建角色con_res_view和用户new_user，并授权和分配空间：
+CREATE ROLE CON_RES_VIEW_LMQ;   //创建角色
+GRANT CONNECT, RESOURCE, CREATE VIEW TO CON_RES_VIEW_LMQ;  //授予角色权限
+CREATE USER NEW_USER_LMQ IDENTIFIED BY 123 DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;	//创建用户
+ALTER USER NEW_USER_LMQ QUOTA 50M ON USERS;	//授权用户访问用户表空间，空间限额是50M
+GRANT CON_RES_VIEW_LMQ TO NEW_USER_LMQ;	    //将角色权限授予用户
 
-```sql
-$ sqlplus system/123@pdborcl
-SQL> CREATE ROLE con_res_view;
-Role created.
-SQL> GRANT connect,resource,CREATE VIEW TO con_res_view;
-Grant succeeded.
-SQL> CREATE USER new_user IDENTIFIED BY 123 DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp;
-User created.
-SQL> ALTER USER new_user QUOTA 50M ON users;
-User altered.
-SQL> GRANT con_res_view TO new_user;
-Grant succeeded.
-SQL> exit
-```
-> 语句“ALTER USER new_user QUOTA 50M ON users;”是指授权new_user用户访问users表空间，空间限额是50M。
 
+
+![运行结果](https://github.com/liumengqi77/oracle/blob/master/test1/p1.png)
 
 
 - 第2步：新用户new_user连接到pdborcl，创建表mytable和视图myview，插入数据，最后将myview的SELECT对象权限授予hr用户。
 
-```sql
-$ sqlplus new_user/123@pdborcl
-SQL> show user;
-USER is "NEW_USER"
-SQL> CREATE TABLE mytable (id number,name varchar(50));
-Table created.
-SQL> INSERT INTO mytable(id,name)VALUES(1,'zhang');
-1 row created.
-SQL> INSERT INTO mytable(id,name)VALUES (2,'wang');
-1 row created.
-SQL> CREATE VIEW myview AS SELECT name FROM mytable;
-View created.
-SQL> SELECT * FROM myview;
-NAME
---------------------------------------------------
-zhang
-wang
-SQL> GRANT SELECT ON myview TO hr;
-Grant succeeded.
-SQL>exit
-```
+GRANT SELECT ON MYVIEW_WTS TO hr;    //将MYVIEW_WTS的SELECT对象权限授予hr用户
+
+![运行结果](https://github.com/liumengqi77/oracle/blob/master/test1/p2.png)
+
 
 - 第3步：用户hr连接到pdborcl，查询new_user授予它的视图myview
 
-```sql
-$ sqlplus hr/123@pdborcl
-SQL> SELECT * FROM new_user.myview;
-NAME
---------------------------------------------------
-zhang
-wang
-SQL> exit
-```
+SELECT * FROM NEW_USER_WTS.MYVIEW_LMQ;  //登录HR用户查询MYVIEW_LMQ视图
+
+
+![运行结果](https://github.com/liumengqi77/oracle/blob/master/test1/p3.png)
+
+
+
+
+
