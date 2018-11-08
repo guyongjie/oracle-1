@@ -16,3 +16,5 @@
 
 ![运行结果](https://github.com/liumengqi77/oracle/blob/master/text3/1.png)
 ![运行结果](https://github.com/liumengqi77/oracle/blob/master/text3/2.png)
+
+2.插入一万条数据
