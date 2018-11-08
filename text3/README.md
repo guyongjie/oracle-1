@@ -11,4 +11,5 @@
 进行分区与不分区的对比实验。
 
 1.创建主表和从表
+
 用户名：NEW_USER_LMQ; 设置主表主键 order_id, 从表外键 order_id; 主表的分区策略是按照日期范围--2016，2017，2018，分别对应分区USERS, USERS02,USERS03。 在主表orders和从表order_details之间建立引用分区 在NEW_USER_WTS用户中创建两个表：orders（订单表）和order_details（订单详表），两个表通过列order_id建立主外键关联。orders表按范围分区进行存储，order_details使用引用分区进行存储。
