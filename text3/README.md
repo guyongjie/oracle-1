@@ -27,6 +27,7 @@
 
 
 从表的数据页面看
+
 ![运行结果](https://github.com/liumengqi77/oracle/blob/master/text3/4.png)
 ![运行结果](https://github.com/liumengqi77/oracle/blob/master/text3/5.png)
 
@@ -34,3 +35,4 @@
 分区与不分区的对比
 ![运行结果](https://github.com/liumengqi77/oracle/blob/master/text3/6.png)
 ![运行结果](https://github.com/liumengqi77/oracle/blob/master/text3/7.png)
+可以发现在使用分区的时候，占的资源要更多一点，但是速度要更快
