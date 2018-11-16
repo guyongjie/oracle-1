@@ -59,7 +59,8 @@ where departments.department_id=employees.department_id
   ```select a.department_name,(select sum(c.Trade_Receivable)from orders c  where c.employee_id=d.employee_id group by c.employee_id)as "销售总额"
 from departments a,employees b,orders d
 where a.department_id=b.department_id
-```
+and d.employee_id=b.employee_id;
+  ```
 
 ![运行结果](https://github.com/liumengqi77/oracle/blob/master/test4/7.png)
-and d.employee_id=b.employee_id;
+
