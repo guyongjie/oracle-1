@@ -58,7 +58,7 @@ END MyPack;
 ```
     
 创建成功截图：
-   
+   ![运行结果](https://github.com/liumengqi77/oracle/blob/master/test5/1.png)
 
  #2.测试：
     实现语句：
@@ -69,7 +69,7 @@ END MyPack;
  ```
     
 运行结果截图：
-   
+   ![运行结果](https://github.com/liumengqi77/oracle/blob/master/test5/2.png)
     
  ```sql
     --测试过程GET_EMPLOYEES
@@ -83,4 +83,4 @@ END;
  ```
     
 运行结果截图：
-    
+    ![运行结果](https://github.com/liumengqi77/oracle/blob/master/test5/3.png)
